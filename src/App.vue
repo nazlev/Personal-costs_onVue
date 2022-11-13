@@ -33,7 +33,7 @@ mounted() {
         {id: '#', date: 'Date', name: 'Category', value: 'Value'},
         {id: 1, date: '23.03.2020', name: 'Food', value: 169},
         {id: 2, date: '24.03.2020', name: 'Transport', value: 360},
-        {id: 3, date: '25.03.2020', name: 'Food', value: 530},
+        {id: 3, date: '25.03.2020', name: 'Education', value: 530},
         {id: 4, date: '26.03.2020', name: 'Housing', value: 273},
         {id: 5, date: '27.03.2020', name: 'Healthcare', value: 545},
         {id: 6, date: '28.03.2020', name: 'Housing', value: 502},
