@@ -2,7 +2,12 @@
 <div>
     <button class="formAdd__btn formAdd__cost" v-on:click="visible = !visible">ADD NEW COST +</button>
     <div class="formAdd" v-show="visible">
-        <input class="formAdd__input" type="text" placeholder="Payment description" v-model="newDesc"/>
+        <select class="formAdd__input formAdd__select"  v-model="newDesc"> 
+            <option value="" disabled hidden>Payment Description</option>
+            <option v-for="desc in getCategoryList" :value="desc">
+                {{ desc }} 
+            </option>
+        </select>
         <input class="formAdd__input" type="text" placeholder="Payment amount" v-model="newValue"/>
         <input class="formAdd__input" type="text" placeholder="Payment date" v-model="newDate"/>
         <button class="formAdd__btn" v-on:click="add">ADD +</button>
@@ -11,6 +16,7 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
 export default {
     name: 'CompForm',
     data() {
@@ -21,14 +27,24 @@ export default {
             visible: false
         }
     },
+    computed: {
+        ...mapGetters([
+        'getCategoryList'
+        ]) 
+    },
     methods: {
         add() {
             this.$emit('add', { x: this.newDate, y: this.newDesc, z: this.newValue });
             this.newDate = '',
             this.newDesc = '',
             this.newValue = ''
-        }
-    }
+        },
+        ...mapActions(['loadCategories'])
+    },
+    mounted () {
+        if (!this.getCategoryList.length) {
+        this.loadCategories() }
+        } 
 }
 </script>
 
@@ -62,6 +78,11 @@ export default {
         &__cost {
             padding: 5px 30px;
             margin: 20px 0px;
+        }
+        &__select {
+            padding:17px;
+            width: 275px;
+            color: black
         }
     }
 </style>
