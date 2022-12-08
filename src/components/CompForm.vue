@@ -1,10 +1,9 @@
 <template>
 <div>
-    <button class="formAdd__btn formAdd__cost" v-on:click="visible = !visible">ADD NEW COST +</button>
     <div class="formAdd" v-show="visible">
         <select class="formAdd__input formAdd__select"  v-model="newDesc"> 
             <option value="" disabled hidden>Payment Description</option>
-            <option v-for="desc in getCategoryList" :value="desc">
+            <option v-for="desc in getPayList" :value="desc">
                 {{ desc }} 
             </option>
         </select>
@@ -16,7 +15,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
     name: 'CompForm',
     data() {
@@ -24,12 +23,12 @@ export default {
             newDesc: '',
             newValue: '',
             newDate: '',
-            visible: false
+            visible: true
         }
     },
     computed: {
         ...mapGetters([
-        'getCategoryList'
+        'getPayList'
         ]) 
     },
     methods: {
@@ -39,12 +38,7 @@ export default {
             this.newDesc = '',
             this.newValue = ''
         },
-        ...mapActions(['loadCategories'])
     },
-    mounted () {
-        if (!this.getCategoryList.length) {
-        this.loadCategories() }
-        } 
 }
 </script>
 
@@ -63,6 +57,7 @@ export default {
             width: 250px;
             height: 28px;
             padding-left: 10px;
+            margin-left: -240px;
             &::placeholder {
                 color: #ccc;
             }
@@ -70,19 +65,21 @@ export default {
         &__btn {
             border: none;
             padding: 5px 50px;
-            margin-left: 150px;
             background-color: lightseagreen;
             color: white;
             cursor: pointer;
-        }
-        &__cost {
-            padding: 5px 30px;
-            margin: 20px 0px;
+            margin-left: -240px;
         }
         &__select {
             padding:17px;
             width: 275px;
-            color: black
+            color: black;
+            margin-left: -240px;
         }
+    }
+    .formAddBtn{
+        padding: 5px 30px;
+        margin: 20px 0px;
+        margin-left: -350px;
     }
 </style>
