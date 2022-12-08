@@ -1,10 +1,16 @@
 <template>
     <div class="list">
-      <div class="item" v-for="item of data" :key="item.id" >
+      <div class="item">
+        <span class="bold">#</span>
+        <span class="bold">Date</span>
+        <span class="bold">Category</span>
+        <span class="bold">Value</span>
+      </div>
+      <div class="item" v-for="item of lists" :key="item.id" >
         <span>{{ item.id }}</span>
         <span>{{ item.date }}</span>
         <span>{{ item.name }}</span>
-        <span>{{ item.value }}</span>
+        <span>{{ item.value }} $</span>
       </div>
     </div>
 </template>
@@ -13,11 +19,8 @@
 <script>
 export default {
     name: 'CompList',
-    props: {
-        data: {
-            type: Array,
-            default: [],
-        }
+    computed: {
+      lists() { return this.$store.getters.getCategoryList }
     }
 }
 </script>
@@ -38,5 +41,8 @@ export default {
     &:last-child {
       margin-bottom: 20px;
     }
+  }
+  .bold {
+    font-weight: bold;
   }
 </style>

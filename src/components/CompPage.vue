@@ -1,8 +1,8 @@
  <template>
     <div class="pagination">
-        <font-awesome-icon icon="fa-solid fa-angle-left" />
-        <button v-for="num, idx of numbers" :key="idx" class="btn">{{ num }}</button>
-        <font-awesome-icon icon="fa-solid fa-angle-right" />
+      <button @click="$store.commit('setPrevPage')"><font-awesome-icon icon="fa-solid fa-angle-left btnIcon" /></button>
+      <button v-for="num, idx of numbers" :key="idx" class="btn">{{ num }}</button>
+      <button @click="$store.commit('setNextPage')"><font-awesome-icon icon="fa-solid fa-angle-right btn" /></button>
     </div>
  </template>
 
@@ -11,11 +11,9 @@
     name: 'CompPage',
     data() {
         return {
-            numberPag: 1,
             numbers: [
                 1,
-                2,
-                3
+                2
             ]
         }
     }
@@ -25,12 +23,21 @@
 <style lang="scss">
     .pagination {
         margin: 0 auto;
-        width: 300px;
+        width: 495px;
         border: 1px solid #ccc;
+        padding: 5px;
+    }
+
+    .btnIcon {
+        border: none;
+        outline: none;
     }
 
     .btn {
         border: none;
         background-color: white;
+        &:hover {
+            color: lightseagreen;
+        }
     }
 </style>
