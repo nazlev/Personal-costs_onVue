@@ -4,13 +4,15 @@ export default {
             return
         }
         this.installed = true;
-        
+
         Vue.prototype.$modal = {
-            show() {
-                console.log('Shown!')
+            EventBus: new Vue(),
+
+            show(modalId) {
+                this.EventBus.$emit('modalShow', modalId)
             },
-            hide() {
-                console.log('Hiden!')
+            hide(modalId) {
+                this.EventBus.$emit('modalHide', modalId)
             }
         }
     }

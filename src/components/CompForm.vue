@@ -57,7 +57,7 @@ export default {
             width: 250px;
             height: 28px;
             padding-left: 10px;
-            margin-left: -240px;
+            margin-left: -230px;
             &::placeholder {
                 color: #ccc;
             }
@@ -68,18 +68,18 @@ export default {
             background-color: lightseagreen;
             color: white;
             cursor: pointer;
-            margin-left: -240px;
+            margin-left: -230px;
         }
         &__select {
             padding:17px;
             width: 275px;
             color: black;
-            margin-left: -240px;
+            margin-left: -230px;
         }
     }
     .formAddBtn{
         padding: 5px 30px;
         margin: 20px 0px;
-        margin-left: -350px;
+        margin-left: -330px;
     }
 </style>

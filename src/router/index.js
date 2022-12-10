@@ -16,10 +16,10 @@ const routes = [
     name: 'form',
     component: FormView
   },
-  {
-    path: '*',
-    component: Page404
-  }
+  // {
+  //   path: '*',
+  //   component: Page404
+  // }
 ]
 
 const router = new VueRouter({
